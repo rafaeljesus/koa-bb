@@ -1,0 +1,8 @@
+node_modules/
+coverage/
+build/
+.nyc_output/
+npm-debug.log
+tags
+**/*.swp
+**/*~

@@ -1,0 +1,50 @@
+{
+  "name": "koa-bb",
+  "version": "1.0.0",
+  "description": "koa2, jwt, knex, ava and docker boilerplate ",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test nyc --reporter=lcov ava && nyc report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaeljesus/koa-bb.git"
+  },
+  "keywords": [
+    "api",
+    "koa",
+    "koa2",
+    "knex",
+    "docker",
+    "ava",
+    "boilerplate"
+  ],
+  "author": "Rafael Jesus <rafaelljesus86@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafaeljesus/koa-bb/issues"
+  },
+  "homepage": "https://github.com/rafaeljesus/koa-bb#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.6",
+    "jwt-simple": "^0.5.0",
+    "kcors": "^1.2.0",
+    "knex": "^0.11.1",
+    "koa": "^1.2.0",
+    "koa-bodyparser": "^2.0.1",
+    "koa-logger": "^1.3.0",
+    "koa-router": "^5.4.0",
+    "pg": "^4.5.5"
+  },
+  "devDependencies": {
+    "ava": "^0.14.0",
+    "nyc": "^6.4.3",
+    "snazzy": "^4.0.0",
+    "standard": "^7.0.1",
+    "supertest": "^1.2.0",
+    "supertest-as-promised": "^3.1.0"
+  }
+}

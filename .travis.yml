@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - "6"
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.8
+      - g++-4.8
+before_install:
+  - export CXX="g++-4.8" CC="gcc-4.8"
+  - 'npm install -g npm@latest'
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+install:
+  - npm install
+script:
+  - npm test
