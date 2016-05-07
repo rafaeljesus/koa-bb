@@ -18,8 +18,8 @@ export const findByEmail = (email) =>
 export const findById = (id) =>
   users.where('id', id).first()
 
-export const create = (data) => {
-  data.createdAt = new Date()
+export const create = async (data) => {
+  data.created_at = new Date()
   data.password = await hashAsync(data.password)
   return users.insert(data)
 }

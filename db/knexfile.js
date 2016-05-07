@@ -1,40 +1,37 @@
-export default {
+module.exports = {
   development: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: 'postgres://localhost/koabb_development',
     migrations: {
-      directory: './migrations',
+      directory: `${__dirname}/migrations`,
       tableName: 'migrations'
     },
     seeds: {
-      directory: './seeds'
+      directory: `${__dirname}/seeds`,
     }
   },
-
   test: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: 'postgres://localhost/koabb_test',
     migrations: {
-      directory: './migrations',
+      directory: `${__dirname}/migrations`,
       tableName: 'migrations'
     }
   },
-
   staging: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: 'postgres://localhost/koabb_staging',
     ssl: true,
     migrations: {
-      directory: './migrations'
+      directory: `${__dirname}/migrations`
     }
   },
-
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
     ssl: true,
     migrations: {
-      directory: './migrations'
+      directory: `${__dirname}/migrations`
     }
   }
 }
