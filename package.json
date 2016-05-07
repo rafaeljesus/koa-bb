@@ -28,6 +28,21 @@
     "url": "https://github.com/rafaeljesus/koa-bb/issues"
   },
   "homepage": "https://github.com/rafaeljesus/koa-bb#readme",
+  "ava": {
+    "babel": {
+      "presets": [
+        "es2015",
+        "stage-2"
+      ]
+    },
+    "files": [
+      "test/**/*spec.js"
+    ],
+    "failFast": true,
+    "require": [
+      "es2015-node6"
+    ]
+  },
   "dependencies": {
     "bcrypt": "^0.8.6",
     "jwt-simple": "^0.5.0",
