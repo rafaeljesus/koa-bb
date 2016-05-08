@@ -13,7 +13,7 @@ const hashAsync = (password) => {
 }
 
 export const findByEmail = (email) =>
-  users.where('email', email)
+  users.where('email', email).first()
 
 export const findById = (id) =>
   users.where('id', id).first()
@@ -24,6 +24,6 @@ export const create = async (data) => {
   return users.insert(data)
 }
 
-export const tryPassword = (password, condidate) =>
+export const tryPassword = (password, candidate) =>
   compareSync(candidate, password)
 

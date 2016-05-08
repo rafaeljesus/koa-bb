@@ -7,43 +7,39 @@ const router = Router()
 
 export default router
 
-router.post('/v1/token', async (ctx) => {
+router.post('/v1/token', wrap(async (ctx) => {
   const body = ctx.request.body
 
   if (!body.email || !body.password) {
     return ctx.throw(401)
   }
-  try {
-    const user = await findByEmail(body.email)
-    if (!user) return ctx.throw(401)
 
-    const passwordMatch = tryPassword(user.password, body.password)
-    if (passwordMatch) {
-      return ctx.body = {
-        token: signToken(user)
-      }
-    }
-    ctx.throw(401)
-  } catch (err) {
-    ctx.throw(401)
-  }
-})
+  return await findByEmail(body.email)
+}))
 
-.post('/v1/token/refresh', async (ctx) => {
+.post('/v1/token/refresh', tryPassword(async (ctx) => {
   const token = ctx.request.body.token
-  try {
-    const payload = jwt.decode(token, API_SECRET)
-    const user = await findById(payload.id)
-    if (!user) return ctx.throw(401)
+  const payload = jwt.decode(token, API_SECRET)
+  ctx.request.body = payload
+  return await findById(payload.id)
+}))
 
-    const passwordMatch = tryPassword(user.password, payload.password)
-    if (passwordMatch) {
-      return ctx.body = {
-        token: signToken(user)
+function wrap (fn) {
+  return async (ctx, next) => {
+    try {
+      const user = await fn.apply(ctx, [ctx, next])
+      if (!user) return ctx.throw(401)
+
+      const passwordMatch = tryPassword(user.password, ctx.request.body.password)
+      if (passwordMatch) {
+        return ctx.body = {
+          token: signToken(user)
+        }
       }
+      ctx.throw(401)
+    } catch (err) {
+      ctx.throw(401)
     }
-    ctx.throw(401)
-  } catch (err) {
-    ctx.throw(401)
   }
-})
+}
+
