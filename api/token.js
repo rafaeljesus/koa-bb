@@ -25,7 +25,6 @@ router.post('/v1/token', async (ctx) => {
     }
     ctx.throw(401)
   } catch (err) {
-    console.log(err)
     ctx.throw(401)
   }
 })
