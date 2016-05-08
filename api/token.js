@@ -17,7 +17,7 @@ router.post('/v1/token', wrap(async (ctx) => {
   return await findByEmail(body.email)
 }))
 
-.post('/v1/token/refresh', tryPassword(async (ctx) => {
+.post('/v1/token/refresh', wrap(async (ctx) => {
   const token = ctx.request.body.token
   const payload = jwt.decode(token, API_SECRET)
   ctx.request.body = payload
