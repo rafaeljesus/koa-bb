@@ -3,7 +3,7 @@ import cors from 'kcors'
 import logger from 'koa-logger'
 import bodyParser from 'koa-bodyparser'
 
-import tokenAPI from './api/token'
+import tokenAPI from './api/token/routes'
 
 const app = new Koa()
 

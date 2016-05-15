@@ -1,9 +1,8 @@
 import test from 'ava'
 import supertest from 'supertest-as-promised'
 
-import knex from '../../db'
-import { create } from '../../db/users'
 import app from '../../server'
+import knex from '../../db'
 
 const request = supertest(app.listen())
 

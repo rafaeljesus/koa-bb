@@ -46,6 +46,8 @@
   },
   "dependencies": {
     "bcrypt": "^0.8.6",
+    "bookshelf": "^0.9.5",
+    "bookshelf-modelbase": "^2.10.1",
     "jwt-simple": "^0.5.0",
     "kcors": "^1.2.0",
     "knex": "^0.11.1",
