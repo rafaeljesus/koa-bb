@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import { signToken, authenticate } from '../../lib/auth'
+import { signToken } from '../../lib/auth'
 
 test('should encode token', (t) => {
   const token = signToken({

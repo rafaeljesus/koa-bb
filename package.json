@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "koa2, jwt, knex, ava and docker boilerplate ",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "NODE_ENV=test nyc --reporter=lcov ava && nyc report"
+    "test": "npm run migrate:test && NODE_ENV=test nyc --reporter=lcov ava && nyc report",
+    "migrate:test": "node_modules/.bin/knex migrate:latest --env test --knexfile db/knexfile.js"
   },
   "repository": {
     "type": "git",
