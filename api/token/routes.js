@@ -1,9 +1,11 @@
 import Router from 'koa-router'
+import jwt from 'jwt-simple'
 
 import User from '../users/model'
 import { token as wrap } from '../../lib/wrap'
 
 const router = Router()
+const API_SECRET = process.env.API_SECRET
 
 export default router
 

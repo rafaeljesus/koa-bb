@@ -17,6 +17,8 @@ export default bookshelf.model('User', {
   tryPassword (candidate) {
     return compareSync(candidate, this.get('password'))
   }
+}, {
+  hashAsync
 })
 
 function hashAsync (password) {

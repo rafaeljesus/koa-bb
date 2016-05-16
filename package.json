@@ -39,7 +39,8 @@
     "failFast": true,
     "require": [
       "babel-register",
-      "babel-polyfill"
+      "babel-polyfill",
+      "./test"
     ]
   },
   "dependencies": {
